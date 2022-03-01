@@ -1,0 +1,50 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'java'
+}
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+ext {
+    springBootVersion = '2.6.4'
+}
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'dkarlsso', name: 'webportal-connector', version: '1.0'
+    implementation group: 'dkarlsso', name: 'commons-raspberry', version: '1.0'
+    implementation group: 'dkarlsso', name: 'commons-persistance', version: '1.0'
+
+    annotationProcessor  group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: springBootVersion
+
+
+    implementation group: 'org.thymeleaf', name: 'thymeleaf-spring5', version: '3.0.15.RELEASE'
+    implementation group: 'org.thymeleaf', name: 'thymeleaf', version: '3.0.15.RELEASE'
+    implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '3.0.0'
+
+    implementation group: 'org.webjars', name: 'bootstrap', version: '3.3.7'
+
+    implementation group: 'joda-time', name: 'joda-time', version: '2.9.9'
+
+    implementation group: 'ch.qos.logback', name: 'logback-classic'
+
+    implementation 'com.pi4j:pi4j-core:1.2'
+    implementation 'commons-io:commons-io:2.6'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
+    testImplementation group: 'org.easymock', name: 'easymock', version: '3.5.1'
+    testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
+}
+
+test {
+    useJUnitPlatform {}
+}

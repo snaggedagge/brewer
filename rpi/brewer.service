@@ -1,0 +1,12 @@
+[Unit]
+Description=Brewer
+After=syslog.target
+
+[Service]
+User=root
+WorkingDirectory=/var/opt/brewer
+ExecStart=/var/opt/brewer/run.sh
+
+
+[Install]
+WantedBy=multi-user.target

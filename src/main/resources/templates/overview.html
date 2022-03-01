@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{standard_template}">
+
+<head layout:fragment="~{additionalHead}">
+    <meta http-equiv="refresh" content="30"/>
+</head>
+
+<body>
+<div layout:fragment="~{content}">
+    <img src="/images/cooking.JPG" height="200"/>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="alert alert-info">
+                Column temperature is <strong th:text="${heaterData.columnTemperature}"></strong>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="alert alert-info">
+                Tank temperature is <strong th:text="${heaterData.tankTemperature}"></strong>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="alert alert-danger">
+                Desired Column Temperature is <strong th:text="${settingsData.columnTemperatureLimit}"></strong>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="alert alert-danger">
+                Max Tank Temperature is <strong th:text="${settingsData.tankTemperatureLimit}"></strong>
+            </div>
+        </div>
+    </div>
+        <form method="post" action="/" th:object="${settingsData}" id="settingsForm">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label th:field="*{columnTemperatureLimit}">Desired Column Temperature </label>
+                        <input th:field="*{columnTemperatureLimit}" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label th:field="*{tankTemperatureLimit}">Max Tank Temperature </label>
+                        <input th:field="*{tankTemperatureLimit}" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label th:field="*{wantedEffectWatts}">Wanted effect in Watt </label>
+                        <input th:field="*{wantedEffectWatts}" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label th:field="*{magicLimit}">Limit where heating should slow down to Wanted effect </label>
+                        <input th:field="*{magicLimit}" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label th:field="*{sleepTimeSeconds}">Interval in seconds for heating </label>
+                        <input th:field="*{sleepTimeSeconds}" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <input type="submit" class="btn btn-success" value="Update Settings"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

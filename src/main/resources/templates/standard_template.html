@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Brewer</title>
+
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+        <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="/css/main.css" rel="stylesheet" />
+    </head>
+    <body>
+    <div id="pageheader">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div id="navbar" class="navbar-inner">
+                    <ul class="nav navbar-nav">
+                        <li class=""><a href="/">Overview</a></li>
+                        <li class=""><a href="/logs">Logs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="body">
+        <div class="container">
+            <div th:if="${errorList != null && !errorList.isEmpty()}">
+                <th:block th:each="error : ${errorList}">
+                    <p class="alert alert-danger" th:text="${error}"></p>
+                </th:block>
+            </div>
+
+            <div th:if="${infoList != null && !infoList.isEmpty()}">
+                <th:block th:each="info : ${infoList}">
+                    <p class="alert alert-warning" th:text="${info}"></p>
+                </th:block>
+            </div>
+        </div>
+
+        <div class="container">
+            <div layout:fragment="~{content}">
+                Page content goes here
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
